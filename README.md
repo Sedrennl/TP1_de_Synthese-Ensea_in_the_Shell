@@ -2,7 +2,7 @@
 #### BLARET Julien & LABROUSSE Sédrenn
 ENSEA 2024
 
-## [Compte Rendu du TP](TP1_de_Synthese-Ensea_in_the_Shell/Compte Rendu/CR.md)
+## [Compte Rendu du TP](Compte_Rendu/CR.md)
 > [!IMPORTANT]
 >Le compte rendu du TP est écrit dans le dossier `Compte_Rendu` avec les >captures d'écran justificatives dans le dossier `captures`.
 
