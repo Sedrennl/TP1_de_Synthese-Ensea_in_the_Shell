@@ -4,6 +4,8 @@
 //
 
 #include "question2.h"
+#include <sys/wait.h>
+#include <stdint.h>
 
 void welcome(){
     //Bloc entrée sortie de message et commandes
@@ -14,13 +16,29 @@ void welcome(){
 }
 
 void command_input()
-{
-    char* command_input;
-    read(0, &command_input, sizeof command_input);
-    pid_t pid = fork();
-    if(pid == 0)
+{   while(1)
     {
-        execlp("ls", "ls", "-l", (char*) NULL);
+        int status;
+        char command_input[100];
+        int rt;
+        rt=read(STDIN_FILENO, &command_input, 100);
+        pid_t pid = fork();
+        command_input[rt] = '\0';
+        if(pid == 0)
+        {
+            command_execution(command_input);
+        }
+        else
+        {
+            wait(&status);
+        }
     }
+}
 
+void command_execution(char* command_input)
+{
+    write(STDOUT_FILENO, "Juste après le command input enregistré\n\r", strlen("Juste après le command input enregistré\n\r"));
+    write (STDOUT_FILENO, command_input, strlen(command_input));
+    execlp((const char *) command_input, (const char *)command_input, (char*)NULL);
+    exit(0);
 }
