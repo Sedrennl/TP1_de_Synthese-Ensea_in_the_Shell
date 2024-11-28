@@ -9,4 +9,8 @@ des programmes lancés.
 
 ### Question 1 : 
 [code](../enseash/question1.c)
-Le but de cette question est de créer un micro shell
+
+Le but de cette question est de créer un micro shell et d'afficher un message d'acceuil. 
+
+Notre premier test fut infructueux : 
+[imageghost](Compte_Rendu/photos/Q1_ghost.jpeg)
