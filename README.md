@@ -4,7 +4,7 @@ ENSEA 2024
 
 ## [Compte Rendu du TP](Compte_Rendu/CR.md)
 > [!IMPORTANT]
->Le compte rendu du TP est écrit dans le dossier `Compte_Rendu` avec les >captures d'écran justificatives dans le dossier `captures`.
+>Le compte rendu du TP est écrit dans le dossier `Compte_Rendu` avec les captures d'écran justificatives dans le dossier `photos`.
 
 On tiendra ci-joint le journal de bord de l'avancée du TP :
 
@@ -29,7 +29,16 @@ On tiendra ci-joint le journal de bord de l'avancée du TP :
 
 ## Organisation du Dépôt : 
 
+Le dépot se réparti en 3 dossier :
 
+**🔵 Compte_Rendu**
+>ce dossier contient le Compte Rendu ainsi que les photos utilisées
+
+**🟢 enseash**
+>ce dossier contient le code des différentes questions
+
+**🔴 .idea**
+>ce dossier est nécessaire au fonctionnement de sealion, logiciel que nous utilisons
 
 
 
