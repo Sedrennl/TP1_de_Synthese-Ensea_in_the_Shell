@@ -32,7 +32,7 @@ On tiendra ci-joint le journal de bord de l'avancée du TP :
 Le dépot se réparti en 3 dossier :
 
 **🔵 Compte_Rendu**
->ce dossier contient le Compte Rendu ainsi que les photos utilisées
+>ce dossier contient le Compte Rendu ainsi que les photos utilisées et l'énnoncé du TP
 
 **🟢 enseash**
 >ce dossier contient le code des différentes questions
