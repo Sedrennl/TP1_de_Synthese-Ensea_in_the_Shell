@@ -1,6 +1,6 @@
 //TP Synthese ENSEA in the Shell
 //Question 2
-//Blaret julien and LABROUSSE Sédrenn on 28/11/24.
+//BLARET julien and LABROUSSE Sédrenn on 28/11/24.
 //
 
 #include "question2.h"
