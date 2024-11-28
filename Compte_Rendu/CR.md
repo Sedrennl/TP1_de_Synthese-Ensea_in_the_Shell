@@ -8,5 +8,5 @@ des programmes lancés.
 
 
 ### Question 1 : 
-[code](TP1_de_Synthese-ENSEA_in_the_Shell/enseash/question1.c)
+[code](../enseash/question1.c)
 Le but de cette question est de créer un micro shell
