@@ -35,10 +35,7 @@ Le dépot se réparti en 3 dossier :
 >ce dossier contient le Compte Rendu
 
 **🟢 enseash**
->ce dossier contient le code des différentes questions
-
-**🟡 photos**
->ce dossier contient les photos nécessaires à notre CR
+>ce dossier contient le code des différentes questions ainsi que les photos utilisées
 
 **🔴 .idea**
 >ce dossier est nécessaire au fonctionnement de sealion, logiciel que nous utilisons
