@@ -55,8 +55,8 @@ build CMakeFiles/enseash.dir/main.c.o: C_COMPILER__enseash_unscanned_Debug /run/
   OBJECT_DIR = CMakeFiles/enseash.dir
   OBJECT_FILE_DIR = CMakeFiles/enseash.dir
 
-build CMakeFiles/enseash.dir/question1.c.o: C_COMPILER__enseash_unscanned_Debug /run/media/julien/Commun_Clair/2024-2025/Majeure$ Inf/TP1_de_Synthese-Ensea_in_the_Shell/enseash/question1.c || cmake_object_order_depends_target_enseash
-  DEP_FILE = CMakeFiles/enseash.dir/question1.c.o.d
+build CMakeFiles/enseash.dir/question2.c.o: C_COMPILER__enseash_unscanned_Debug /run/media/julien/Commun_Clair/2024-2025/Majeure$ Inf/TP1_de_Synthese-Ensea_in_the_Shell/enseash/question2.c || cmake_object_order_depends_target_enseash
+  DEP_FILE = CMakeFiles/enseash.dir/question2.c.o.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/enseash.dir
   OBJECT_FILE_DIR = CMakeFiles/enseash.dir
@@ -69,7 +69,7 @@ build CMakeFiles/enseash.dir/question1.c.o: C_COMPILER__enseash_unscanned_Debug 
 #############################################
 # Link the executable enseash
 
-build enseash: C_EXECUTABLE_LINKER__enseash_Debug CMakeFiles/enseash.dir/main.c.o CMakeFiles/enseash.dir/question1.c.o
+build enseash: C_EXECUTABLE_LINKER__enseash_Debug CMakeFiles/enseash.dir/main.c.o CMakeFiles/enseash.dir/question2.c.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/enseash.dir
   POST_BUILD = :

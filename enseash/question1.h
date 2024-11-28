@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 #ifndef QUESTION1_H
 #define QUESTION1_H
 #endif //QUESTION1_H
