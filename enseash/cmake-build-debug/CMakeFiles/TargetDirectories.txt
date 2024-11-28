@@ -1,0 +1,3 @@
+/run/media/julien/Commun_Clair/2024-2025/Majeure Inf/TP1_de_Synthese-Ensea_in_the_Shell/enseash/cmake-build-debug/CMakeFiles/enseash.dir
+/run/media/julien/Commun_Clair/2024-2025/Majeure Inf/TP1_de_Synthese-Ensea_in_the_Shell/enseash/cmake-build-debug/CMakeFiles/edit_cache.dir
+/run/media/julien/Commun_Clair/2024-2025/Majeure Inf/TP1_de_Synthese-Ensea_in_the_Shell/enseash/cmake-build-debug/CMakeFiles/rebuild_cache.dir
