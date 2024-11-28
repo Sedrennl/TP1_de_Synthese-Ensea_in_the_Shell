@@ -2,7 +2,11 @@
 // Created by julien on 28/11/24.
 //
 #include"question1.h";
+
+#include <string.h>
+
 void welcome()
 {
-    write(STDOUT_FILENO, "Bienvenue dans le shell ENSEA \n\r Pour quitter, tapez 'exit' \n\r enseash %", 1024);
+    char* welcome_message = "Bienvenue dans le shell ENSEA \n\r Pour quitter, tapez 'exit' \n\r enseash %";
+    write(STDOUT_FILENO, welcome_message, strlen(welcome_message));
 }
