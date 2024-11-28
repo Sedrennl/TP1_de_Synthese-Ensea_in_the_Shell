@@ -30,9 +30,18 @@ On tiendra ci-joint le journal de bord de l'avancée du TP :
 ## Organisation du Dépôt : 
 
 Le dépot se réparti en 3 dossier :
-**<span style="color:blue;">Compte_Rendu</span>**
 
+**🔵 Compte_Rendu**
+>ce dossier contient le Compte Rendu
 
+**🟢 enseash**
+>ce dossier contient le code des différentes questions
+
+**🟡 photos**
+>ce dossier contient les photos nécessaires à notre CR
+
+**🔴 .idea**
+>ce dossier est nécessaire au fonctionnement de sealion, logiciel que nous utilisons
 
 
 
