@@ -2,7 +2,7 @@
 #### BLARET Julien & LABROUSSE Sédrenn
 ENSEA 2024
 
-## [Compte Rendu du TP] (Compte Rendu/CR.md)
+## [Compte Rendu du TP] (Compte_Rendu/CR.md)
 > [!IMPORTANT]
 >Le compte rendu du TP est écrit dans le dossier `Compte_Rendu` avec les >captures d'écran justificatives dans le dossier `captures`.
 
