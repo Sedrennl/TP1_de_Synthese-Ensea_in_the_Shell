@@ -11,8 +11,13 @@ On tiendra ci-joint le journal de bord de l'avancée du TP :
 
 ---
 
+## Journal de Bord
 
- # Tableau de bord
-**Séance 1 :**  28/11/2024 => création et Organisation du Github
+### **Note**
+
+**Séance 1 : 28/11** → Création du Github, Organisation du GitHub
+-
+---
+
 
       
