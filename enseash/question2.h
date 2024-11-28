@@ -1,5 +1,6 @@
-//
-// Created by julien on 28/11/24.
+//TP Synthese ENSEA in the Shell
+//Question 2
+//BLARET julien and LABROUSSE Sédrenn on 28/11/24.
 //
 #include <stdio.h>
 #include <stdlib.h>
