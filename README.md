@@ -4,7 +4,7 @@ ENSEA 2024
 
 ## [Compte Rendu du TP](Compte_Rendu/CR.md)
 > [!IMPORTANT]
->Le compte rendu du TP est écrit dans le dossier `Compte_Rendu` avec les >captures d'écran justificatives dans le dossier `captures`.
+>Le compte rendu du TP est écrit dans le dossier `Compte_Rendu` avec les captures d'écran justificatives dans le dossier `photos`.
 
 On tiendra ci-joint le journal de bord de l'avancée du TP :
 
