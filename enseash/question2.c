@@ -20,10 +20,11 @@ void command_input()
     {
         int status;
         char command_input[100];
+
         int rt;
-        rt=read(STDIN_FILENO, &command_input, 100);
+        rt=read(STDIN_FILENO, command_input, 100);
         pid_t pid = fork();
-        command_input[rt] = '\0';
+        command_input[rt-1] = '\0'; // On remplace le '\n' du enter par le '\0' marquant la fin de caractère
         if(pid == 0)
         {
             command_execution(command_input);
@@ -31,14 +32,17 @@ void command_input()
         else
         {
             wait(&status);
+            write(STDOUT_FILENO, "enseash %", strlen("enseash %"));
         }
     }
 }
 
-void command_execution(char* command_input)
+void command_execution(char *command_input)
 {
-    write(STDOUT_FILENO, "Juste après le command input enregistré\n\r", strlen("Juste après le command input enregistré\n\r"));
-    write (STDOUT_FILENO, command_input, strlen(command_input));
-    execlp((const char *) command_input, (const char *)command_input, (char*)NULL);
+    int text_size = 0;
+    char buffer[100];
+    if(-1 == execlp(command_input, command_input, (char *)NULL)){
+        write(STDOUT_FILENO,"ERROR\n",strlen("ERROR\n"));
+    }
     exit(0);
 }
