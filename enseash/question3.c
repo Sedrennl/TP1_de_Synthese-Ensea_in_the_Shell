@@ -34,6 +34,7 @@ void command_input()
         if(strcmp(command_input, "exit") == 0)
         {
             write(STDOUT_FILENO, "Bye bye", strlen("Bye bye"));
+            kill(getppid(), SIGKILL);
             exit(0);
         }
         wait(&status);
