@@ -17,24 +17,29 @@ void welcome(){
 
 void command_input()
 {   while(1)
+{
+    int status;
+    char command_input[100];
+    int rt;
+    rt=read(STDIN_FILENO, command_input, 100);
+    pid_t pid = fork();
+    command_input[rt - 1] = '\0';
+    // On remplace le '\n' du enter par le '\0' marquant la fin de la chaîne de caractère
+    if(pid == 0 & strcmp(command_input, "exit") != 0)
     {
-        int status;
-        char command_input[100];
-        int rt;
-        rt=read(STDIN_FILENO, command_input, 100);
-        pid_t pid = fork();
-        command_input[rt - 1] = '\0';
-        // On remplace le '\n' du enter par le '\0' marquant la fin de la chaîne de caractère
-        if(pid == 0)
-        {
-            command_execution(command_input);
-        }
-        else
-        {
-            wait(&status);
-            write(STDOUT_FILENO, "enseash %", strlen("enseash %"));
-        }
+        command_execution(command_input);
     }
+    else if(pid > 0)
+    {
+        if(strcmp(command_input, "exit") == 0)
+        {
+            write(STDOUT_FILENO, "Bye bye", strlen("Bye bye"));
+            exit(0);
+        }
+        wait(&status);
+        write(STDOUT_FILENO, "enseash %", strlen("enseash %"));
+    }
+}
 }
 
 void command_execution(char *command_input)
