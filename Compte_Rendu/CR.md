@@ -93,9 +93,15 @@ Nous avons un prompt fonctionnel qui gère correctement :
   - Le code de sortie pour une commande terminée normalement (exit:N).
   - Le signal ayant causé l’arrêt d’une commande si elle a été interrompue (sign:N).
 
+Pour ce faire on a créé 2 programmes test, presents dans test_q4 :
+  - test1 [code test1](../test_q4/test1.c) renverra un segmentation fault
+  - test2 [code test1](../test_q4/test2.c) testera un temps de 5s
 
-add tester avec 2 programme => 1 segmentation fault en ./test1
-                            => 1 test temps           en./test2
+Après avoir fait nos codes, nous avons pu tester la fonction test1
+
+![image test fonction](/photos/q4.png)
+
+On voit bien qu'on nous retourne une erreur, ici 7 qui correspond à BUS FAULT. Mais on obtient aussi parfois le code 11 qui correspond au SEGMENTATION FAULT
 
 
 
