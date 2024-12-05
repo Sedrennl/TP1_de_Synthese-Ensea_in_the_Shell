@@ -45,14 +45,14 @@ void command_input()
             wait(&status);
             if (WIFEXITED(status))
             {
-                int signal_number = WTERMSIG(status);
+                int signal_number = WEXITSTATUS(status);
                 snprintf(prompt, sizeof(prompt), "enseash [exit:%d] %% ", signal_number);
 
                 write(STDOUT_FILENO, prompt, strlen(prompt));
             }
             else if (WIFSIGNALED(status))
             {
-                int signal_number = WEXITSTATUS(status);
+                int signal_number = WTERMSIG(status);
                 snprintf(prompt, sizeof(prompt), "enseash [exit:%d] %% ", signal_number);
 
                 write(STDOUT_FILENO, prompt, strlen(prompt));
