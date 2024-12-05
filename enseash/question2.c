@@ -8,7 +8,7 @@
 #include <stdint.h>
 
 void welcome(){
-    //Bloc entrée sortie de message et commandes
+    //Input-output block for messages and commands
     char* welcome_message = "Bienvenue dans le shell ENSEA \n\r Pour quitter, tapez 'exit' \n\r enseash %";
 
 
@@ -24,7 +24,7 @@ void command_input()
         rt=read(STDIN_FILENO, command_input, 100);
         pid_t pid = fork();
         command_input[rt - 1] = '\0';
-        // On remplace le '\n' du enter par le '\0' marquant la fin de la chaîne de caractère
+        // Replace the '\n' from the Enter key with '\0' to mark the end of the string
         if(pid == 0)
         {
             command_execution(command_input);
