@@ -37,6 +37,9 @@ Le dépot se réparti en 3 dossier :
 **🟢 enseash**
 >ce dossier contient le code des différentes questions
 
+**⚪ test**
+>ce dossier contient les fichiers de test utilisés par la question 4
+
 **🔴 .idea**
 >ce dossier est nécessaire au fonctionnement de sealion, logiciel que nous utilisons
 
