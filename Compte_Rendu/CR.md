@@ -78,7 +78,7 @@ On voit bien le message "Bye bye" et la terminaison du programme.
 **Problèmes rencontrés :**
 Lors de l'implémentation, une erreur initiale apparaissait si le remplacement du caractère \n par \0 n’était pas correctement géré. Une fois corrigée, tout a fonctionné comme prévu.
 Nous avons également réussi à créer notre premier virus, du à un mauvais placement de l'Exit, et du fait de tuer le père du processus père, aka le PC. 
-cf ![Virus](photos/q4_virus.mp)
+cf ![Virus](photos/q4_virus.mp4)
 
 **Résultat final :**
 Nous avons un prompt fonctionnel qui gère correctement :
@@ -88,10 +88,15 @@ Nous avons un prompt fonctionnel qui gère correctement :
 
 ### Question 4 : [code question 4](../enseash/question4.c)
 
+**Objectif :**
+Afficher, dans le prompt, le code de retour ou le signal associé à la commande précédente. Cela permet de fournir des informations utiles sur l’exécution des commandes, notamment :
+
+  - Le code de sortie pour une commande terminée normalement (exit:N).
+  - Le signal ayant causé l’arrêt d’une commande si elle a été interrompue (sign:N).
 
 
-add tester avec 2 programme => 1 segmentation fault
-                            => 1 test temps
+add tester avec 2 programme => 1 segmentation fault en ./test1
+                            => 1 test temps           en./test2
 
 
 
