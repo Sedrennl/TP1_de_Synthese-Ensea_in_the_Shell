@@ -6,3 +6,12 @@
 #define QUESTION4_H
 
 #endif //QUESTION4_H
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <sys/types.h>
+#define MAX_SIZE 6
+void welcome(void);
+void command_input(void);
+void command_execution(char *command_input);
