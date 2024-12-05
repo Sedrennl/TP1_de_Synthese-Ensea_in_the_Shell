@@ -26,7 +26,7 @@ A noter qu'à ce stade, nous ne pouvons pas quitter le programme avec *exit*, no
 [code question 1](../enseash/question2.c)
 
 Dans un premier temps nous testons la fonction execlp avec "ls" :
-![image test fonction](Compte_Rendu/photos/q2_test_avec_execlp_marche.png)
+![image test fonction](photos/q2_test_avec_execlp_marche.png)
 Jusqu'ici tout va bien....
 
 
