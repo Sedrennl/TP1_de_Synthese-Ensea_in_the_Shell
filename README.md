@@ -14,11 +14,11 @@ On tiendra ci-joint le journal de bord de l'avancée du TP :
 
 **Séance 1 : 28/11** => Création du Github, Organisation du GitHub
 - [x] Question 1
-- [ ] Question 2
-- [ ] Question 3
-- [ ] Question 4
+- [x] Question 2
 
 **Séance 2 : 05/12** => Suite du TP de Synthèse
+- [ ] Question 3
+- [ ] Question 4
 - [ ] Question 5
 - [ ] Question 6
 - [ ] Question 7
