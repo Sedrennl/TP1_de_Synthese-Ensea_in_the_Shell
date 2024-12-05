@@ -1,10 +1,11 @@
 # ninja log v6
-2	40	1733392696115715900	CMakeFiles/enseash.dir/question2.c.o	6e16a82eac3fcb3b
-1	34	1733394549831539100	build.ninja	da0c645c1b5a2d06
-1	41	1733392829770143400	CMakeFiles/enseash.dir/question1.c.o	2e2eb9593691c0b
-37	61	1733393495129195200	enseash	323f6d7d2fabbffd
-1	27	1733393082185152900	CMakeFiles/enseash.dir/main.c.o	c3eb3237507f78d5
-2	61	1733391750210066300	CMakeFiles/enseash.dir/question3.c.o	c42d54daf1dcceb8
-2	37	1733393495093605500	CMakeFiles/enseash.dir/question4.c.o	e57acbda9fb12158
 2	40	1733394686902322400	CMakeFiles/enseash.dir/question4.c.o	e57acbda9fb12158
-40	76	1733394686940370600	enseash	323f6d7d2fabbffd
+2	61	1733391750210066300	CMakeFiles/enseash.dir/question3.c.o	c42d54daf1dcceb8
+3	33	1733395666278644900	CMakeFiles/enseash.dir/main.c.o	c3eb3237507f78d5
+33	54	1733395666308633600	enseash	323f6d7d2fabbffd
+1	41	1733392829770143400	CMakeFiles/enseash.dir/question1.c.o	2e2eb9593691c0b
+1	34	1733395793814922600	build.ninja	da0c645c1b5a2d06
+2	40	1733392696115715900	CMakeFiles/enseash.dir/question2.c.o	6e16a82eac3fcb3b
+1	37	1733395793814922600	build.ninja	da0c645c1b5a2d06
+2	32	1733395793829717400	CMakeFiles/enseash.dir/question5.c.o	b21ebc168287d9f2
+33	55	1733395793860550900	enseash	c14d17a5a431304c
