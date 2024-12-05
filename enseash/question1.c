@@ -8,7 +8,7 @@
 
 void welcome()
 {
-    //Bloc entrée sortie de message et commandes
+    //Input-output block for messages and commands
     char* welcome_message = "Bienvenue dans le shell ENSEA \n\r Pour quitter, tapez 'exit' \n\r enseash %";
     write(STDOUT_FILENO, welcome_message, strlen(welcome_message));
 }
