@@ -1,4 +1,0 @@
-/home/julien/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/julien/.local/share/JetBrains/Toolbox/apps/clion/bin/ninja/linux/x64/ninja -G Ninja -S "/run/media/julien/Commun_Clair/2024-2025/Majeure Inf/TP1_de_Synthese-Ensea_in_the_Shell/test1" -B "/run/media/julien/Commun_Clair/2024-2025/Majeure Inf/TP1_de_Synthese-Ensea_in_the_Shell/test1/cmake-build-debug"
--- Configuring done (0.0s)
--- Generating done (0.0s)
--- Build files have been written to: /run/media/julien/Commun_Clair/2024-2025/Majeure Inf/TP1_de_Synthese-Ensea_in_the_Shell/test1/cmake-build-debug
