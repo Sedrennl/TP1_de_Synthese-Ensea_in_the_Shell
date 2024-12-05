@@ -88,8 +88,7 @@ Nous avons un prompt fonctionnel qui gère correctement :
 
 ### Question 4 : [code question 4](../enseash/question4.c)
 
-**Objectif :**
-Afficher, dans le prompt, le code de retour ou le signal associé à la commande précédente. Cela permet de fournir des informations utiles sur l’exécution des commandes, notamment :
+**Objectif :** Afficher, dans le prompt, le code de retour ou le signal associé à la commande précédente. Cela permet de fournir des informations utiles sur l’exécution des commandes, notamment :
 
   - Le code de sortie pour une commande terminée normalement (exit:N).
   - Le signal ayant causé l’arrêt d’une commande si elle a été interrompue (sign:N).
@@ -97,6 +96,14 @@ Afficher, dans le prompt, le code de retour ou le signal associé à la commande
 
 add tester avec 2 programme => 1 segmentation fault en ./test1
                             => 1 test temps           en./test2
+
+
+
+### Question 5 : [code question 5](../enseash/question5.c)
+**Objectif :** Mesure du temps d’exécution de la commande en utilisant l’appel clock_gettime :
+
+
+
 
 
 

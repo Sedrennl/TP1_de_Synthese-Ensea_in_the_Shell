@@ -18,7 +18,7 @@ On tiendra ci-joint le journal de bord de l'avancée du TP :
 
 **Séance 2 : 05/12** => Suite du TP de Synthèse
 - [x] Question 3
-- [ ] Question 4
+- [x] Question 4
 - [ ] Question 5
 - [ ] Question 6
 - [ ] Question 7
@@ -36,6 +36,9 @@ Le dépot se réparti en 3 dossier :
 
 **🟢 enseash**
 >ce dossier contient le code des différentes questions
+
+**⚪ test**
+>ce dossier contient les fichiers de test utilisés par la question 4
 
 **🔴 .idea**
 >ce dossier est nécessaire au fonctionnement de sealion, logiciel que nous utilisons
