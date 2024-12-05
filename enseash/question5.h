@@ -9,6 +9,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <sys/types.h>
+#include <time.h>
 #define MAX_SIZE 6
 void welcome(void);
 void command_input(void);
