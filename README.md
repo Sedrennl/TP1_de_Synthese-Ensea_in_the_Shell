@@ -17,7 +17,7 @@ On tiendra ci-joint le journal de bord de l'avancée du TP :
 - [x] Question 2
 
 **Séance 2 : 05/12** => Suite du TP de Synthèse
-- [ ] Question 3
+- [x] Question 3
 - [ ] Question 4
 - [ ] Question 5
 - [ ] Question 6
