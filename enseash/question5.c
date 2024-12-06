@@ -3,7 +3,7 @@
 //BLARET julien and LABROUSSE Sédrenn on 28/11/24.
 //
 
-#include "question4.h"
+#include "question5.h"
 #include <sys/wait.h>
 #include <stdint.h>
 
@@ -23,6 +23,8 @@ void command_input()
         char command_input[100];
         char prompt[300];
         int rt;
+        struct timespec tbegin, tstop;
+        clock_gettime(CLOCK_REALTIME, &tbegin);
         rt=read(STDIN_FILENO, command_input, 100);
         pid_t pid = fork();
         command_input[rt - 1] = '\0';
@@ -42,18 +44,23 @@ void command_input()
         }
         else if (pid > 0 && strcmp(command_input, "exit") != 0)
         {
+            clock_gettime(CLOCK_REALTIME, &tstop);
             wait(&status);
             if (WIFEXITED(status))
             {
                 int signal_number = WEXITSTATUS(status);
-                snprintf(prompt, sizeof(prompt), "enseash [exit:%d] %% ", signal_number);
+                int execution_time = tstop.tv_nsec - tbegin.tv_nsec;
+                execution_time /= 1000000;
+                snprintf(prompt, sizeof(prompt), "enseash [exit:%d|%dms] %% ", signal_number,execution_time);
 
                 write(STDOUT_FILENO, prompt, strlen(prompt));
             }
             else if (WIFSIGNALED(status))
             {
                 int signal_number = WTERMSIG(status);
-                snprintf(prompt, sizeof(prompt), "enseash [exit:%d] %% ", signal_number);
+                int execution_time = tstop.tv_nsec - tbegin.tv_nsec;
+                execution_time /= 1000000;
+                snprintf(prompt, sizeof(prompt), "enseash [exit:%d|%dms] %% ", signal_number,execution_time);
 
                 write(STDOUT_FILENO, prompt, strlen(prompt));
             }
@@ -62,8 +69,6 @@ void command_input()
 }
 void command_execution(char *command_input)
 {
-    int text_size = 0;
-    char buffer[100];
     if(-1 == execlp(command_input, command_input, (char *)NULL)){
         write(STDOUT_FILENO,"ERROR\n",strlen("ERROR\n"));
     }

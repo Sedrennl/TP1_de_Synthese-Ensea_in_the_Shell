@@ -25,7 +25,7 @@ void command_input(){
         int status;                        // To store the child process status
         char command_input[BUFFER_SIZE];  // Buffer to store the user command
         int rt;                           // Return value of read()
-
+        char prompt[300];
         // Read user input from the standard input
         rt=read(STDIN_FILENO, command_input, BUFFER_SIZE);
 
