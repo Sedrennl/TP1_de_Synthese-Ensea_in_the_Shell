@@ -22,10 +22,11 @@ void welcome(){
 // Main loop to read user input and execute commands
 void command_input(){
     while(1){
-        int status;                        // To store the child process status
+        int status;                       // To store the child process status
         char command_input[BUFFER_SIZE];  // Buffer to store the user command
         int rt;                           // Return value of read()
-        char prompt[300];
+        char prompt[300];                 // Size prompt
+        
         // Read user input from the standard input
         rt=read(STDIN_FILENO, command_input, BUFFER_SIZE);
 
