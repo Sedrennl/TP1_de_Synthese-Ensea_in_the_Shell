@@ -24,8 +24,8 @@ void command_input()
         char prompt[300];
         int rt;
         struct timespec tbegin, tstop;
-        clock_gettime(CLOCK_REALTIME, &tbegin);
         rt=read(STDIN_FILENO, command_input, 100);
+        clock_gettime(CLOCK_REALTIME, &tbegin);
         pid_t pid = fork();
         command_input[rt - 1] = '\0';
         // On remplace le '\n' du enter par le '\0' marquant la fin de la chaîne de caractère
@@ -44,23 +44,24 @@ void command_input()
         }
         else if (pid > 0 && strcmp(command_input, "exit") != 0)
         {
-            clock_gettime(CLOCK_REALTIME, &tstop);
             wait(&status);
+            clock_gettime(CLOCK_REALTIME, &tstop);
             if (WIFEXITED(status))
             {
                 int signal_number = WEXITSTATUS(status);
-                int execution_time = tstop.tv_nsec - tbegin.tv_nsec;
+                long execution_time = (tstop.tv_nsec - tbegin.tv_nsec);
                 execution_time /= 1000000;
-                snprintf(prompt, sizeof(prompt), "enseash [exit:%d|%dms] %% ", signal_number,execution_time);
+                execution_time += (tstop.tv_sec - tbegin.tv_sec)*1000;
+                snprintf(prompt, sizeof(prompt), "enseash [exit:%d|%ldms] %% ", signal_number,execution_time);
 
                 write(STDOUT_FILENO, prompt, strlen(prompt));
             }
             else if (WIFSIGNALED(status))
             {
                 int signal_number = WTERMSIG(status);
-                int execution_time = tstop.tv_nsec - tbegin.tv_nsec;
+                long execution_time = tstop.tv_nsec - tbegin.tv_nsec;
                 execution_time /= 1000000;
-                snprintf(prompt, sizeof(prompt), "enseash [exit:%d|%dms] %% ", signal_number,execution_time);
+                snprintf(prompt, sizeof(prompt), "enseash [exit:%d|%ldms] %% ", signal_number,execution_time);
 
                 write(STDOUT_FILENO, prompt, strlen(prompt));
             }
