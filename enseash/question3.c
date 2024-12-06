@@ -52,7 +52,7 @@ void command_input(){
         // Parent process handling normal commands
         else if (pid > 0 && strcmp(command_input, "exit") != 0){
             wait(&status);// Wait for the child process to finish
-            write(STDOUT_FILENO, PROMPT, strlen(PROMPT));/ Display the prompt again
+            write(STDOUT_FILENO, PROMPT, strlen(PROMPT));// Display the prompt again
         }
     }
 }
