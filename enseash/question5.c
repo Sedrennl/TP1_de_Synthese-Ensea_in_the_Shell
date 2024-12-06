@@ -9,6 +9,7 @@
 
 #define BUFFER_SIZE 100         // Maximum size for user input
 #define WELCOME_MESSAGE "Bienvenue dans le shell ENSEA \n\r Pour quitter, tapez 'exit' \n\r enseash %"
+#define ERROR_MESSAGE "ERROR\n" // Message displayed when a command fails
 #define DIVISION_NS 1000000    // Division factor for execution time ns
 #define DIVISION_S 1000        // Division factor for execution time s
 
