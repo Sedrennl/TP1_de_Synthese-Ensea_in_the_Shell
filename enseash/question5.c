@@ -20,6 +20,7 @@ void welcome(){
     write(STDOUT_FILENO, WELCOME_MESSAGE, strlen(WELCOME_MESSAGE));
 }
 
+// Main loop to read user input and execute commands
 void command_input(){
     while(1)
     {
