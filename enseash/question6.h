@@ -1,19 +1,22 @@
 //TP Synthese ENSEA in the Shell
-//Question 2
-//BLARET julien and LABROUSSE Sédrenn on 28/11/24.
+//Question 5
+//BLARET julien and LABROUSSE Sédrenn on 06/12/24.
 //
+
+#ifndef QUESTION6_H
+#define QUESTION6_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
 #include <sys/types.h>
-
-#ifndef QUESTION2_H
-#define QUESTION2_H
-#endif //QUESTION2_H
+#include <time.h>
 
 #define MAX_SIZE 6
 
 void welcome(void);
 void command_input(void);
-void command_execution(int argc, char *argv);
+void command_execution(char **argv);
+
+#endif //QUESTION6_H
