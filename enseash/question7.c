@@ -1,139 +1,104 @@
-//TP Synthese ENSEA in the Shell
-//Question 7
-//BLARET julien and LABROUSSE Sédrenn on 06/12/24.
-//
+// TP Synthesis ENSEA in the Shell
+// Question 7
+// BLARET Julien and LABROUSSE Sédrenn on 06/12/24.
 
 #include "question7.h"
 #include <sys/wait.h>
 #include <stdint.h>
 
-#define BUFFER_SIZE 100         // Maximum size for user input
+#define BUFFER_SIZE 100         // Maximum input size
 #define WELCOME_MESSAGE "Bienvenue dans le shell ENSEA \n\r Pour quitter, tapez 'exit' \n\r enseash %"
-#define ERROR_MESSAGE "ERROR\n" // Message displayed when a command fails
-#define DIVISION_NS 1000000    // Division factor for execution time ns
-#define DIVISION_S 1000        // Division factor for execution time s
-#define MAX_ARGUMENTS_NUMBER 10
+#define ERROR_MESSAGE "ERROR\n" // Error message for failed commands
+#define DIVISION_NS 1000000     // Convert nanoseconds to milliseconds
+#define DIVISION_S 1000         // Convert seconds to milliseconds
+#define MAX_ARGUMENTS_NUMBER 10 // Maximum number of arguments
 
-
-// Display the welcome message to the user
-void welcome(){
-    // Input-output block for messages and commands
+// Display the welcome message
+void welcome() {
     write(STDOUT_FILENO, WELCOME_MESSAGE, strlen(WELCOME_MESSAGE));
 }
 
-void command_input(){
-    while(1)
-    {
-        int status;                       // To store the child process status
-        char command_input[BUFFER_SIZE];  // Buffer to store the user command
-        int rt;                           // Return value of read()
-        char prompt[300];                 // Size prompt
+// Main loop: process user input and execute commands
+void command_input() {
+    while (1) {
+        int status;                        // Child process status
+        char command_input[BUFFER_SIZE];  // Buffer for user input
+        int rt;                           // Read return value
+        char prompt[300];                 // Buffer for the dynamic prompt
+        struct timespec tbegin, tstop;    // Start and stop times for execution measurement
 
-        // Structures to store the start and stop times for execution measurement
-        struct timespec tbegin, tstop;
+        rt = read(STDIN_FILENO, command_input, BUFFER_SIZE); // Read user input
+        command_input[rt - 1] = '\0'; // Replace '\n' with '\0'
 
-        // Read user input from the standard input
-        rt=read(STDIN_FILENO, command_input, BUFFER_SIZE);
-
-        // Replace the '\n' from the Enter key with '\0' to mark the end of the string
-        command_input[rt - 1] = '\0';
-
-        // Sert à caser la commande en plusieurs arguments pour préparer execlp
+        // Tokenize the input to split it into arguments
         char *argv[MAX_ARGUMENTS_NUMBER];
-        char * token = strtok(command_input," ");
+        char *token = strtok(command_input, " ");
         int argc = 0;
-        while ( token != NULL )
-        {
-            argv[argc] = token;
-            argc ++;
-            // On demande le token suivant.
-            token = strtok ( NULL," ");
-        }
-        // Record the start time before the command execution
-        clock_gettime(CLOCK_REALTIME, &tbegin);
-
-        // Create a new process for the command
-        pid_t pid = fork();
-
-        // Check if we are in the child process and the command is not "exit"
-        if(pid == 0 && strcmp(command_input, "exit") != 0){
-            command_execution(argv);
+        while (token != NULL) {
+            argv[argc++] = token; // Store arguments in argv
+            token = strtok(NULL, " ");
         }
 
-        // Check if we are in the child process and the command is "exit"
-        else if(pid ==0 && strcmp(command_input, "exit") == 0){
-            write(STDOUT_FILENO, "Bye bye", strlen("Bye bye"));
-            exit(0);
-        }
+        clock_gettime(CLOCK_REALTIME, &tbegin); // Start execution timer
 
-        // Check if we are in the parent process and the command is "exit"
-        else if(pid >0 && strcmp(command_input, "exit") == 0){
-            exit(0);
-        }
+        pid_t pid = fork(); // Create a child process
 
-        // Parent process handling normal commands
-        else if (pid > 0 && strcmp(command_input, "exit") != 0){
-            wait(&status);// Wait for the child process to finish
-
-            clock_gettime(CLOCK_REALTIME, &tstop);
-
-            // If the child process exited normally
-            if (WIFEXITED(status)){
-                int signal_number = WEXITSTATUS(status);// Retrieve the exit code of the child process
-
-                // Calculate execution time in milliseconds
-                long execution_time = (tstop.tv_nsec - tbegin.tv_nsec); // Difference in nanoseconds
-                execution_time /= DIVISION_NS; // Convert nanoseconds to milliseconds
-                execution_time += (tstop.tv_sec - tbegin.tv_sec) * DIVISION_S; // Add seconds converted to milliseconds
-
-                snprintf(prompt, sizeof(prompt), "enseash [exit:%d|%ldms] %% ", signal_number,execution_time);// Build dynamic prompt
-                write(STDOUT_FILENO, prompt, strlen(prompt));// Display the prompt
+        if (pid == 0) { // Child process
+            if (strcmp(command_input, "exit") == 0) { // Handle "exit"
+                write(STDOUT_FILENO, "Bye bye", strlen("Bye bye"));
+                exit(0);
+            }
+            command_execution(argv); // Execute the command
+        } else if (pid > 0) { // Parent process
+            if (strcmp(command_input, "exit") == 0) {
+                exit(0); // Exit the shell
             }
 
-            // If the child process was terminated by a signal
-            else if (WIFSIGNALED(status)){
-                int signal_number = WTERMSIG(status);
+            wait(&status); // Wait for the child process to complete
+            clock_gettime(CLOCK_REALTIME, &tstop); // Stop execution timer
 
-                // Calculate execution time in milliseconds
-                long execution_time = (tstop.tv_nsec - tbegin.tv_nsec); // Difference in nanoseconds
-                execution_time /= DIVISION_NS; // Convert nanoseconds to milliseconds
-                execution_time += (tstop.tv_sec - tbegin.tv_sec) * DIVISION_S; // Add seconds converted to milliseconds
+            // Calculate execution time in milliseconds
+            long execution_time = (tstop.tv_nsec - tbegin.tv_nsec) / DIVISION_NS;
+            execution_time += (tstop.tv_sec - tbegin.tv_sec) * DIVISION_S;
 
-                snprintf(prompt, sizeof(prompt), "enseash [exit:%d|%ldms] %% ", signal_number,execution_time);// Build dynamic prompt
-                write(STDOUT_FILENO, prompt, strlen(prompt));// Display the prompt
+            if (WIFEXITED(status)) { // Normal exit
+                snprintf(prompt, sizeof(prompt), "enseash [exit:%d|%ldms] %% ", WEXITSTATUS(status), execution_time);
+            } else if (WIFSIGNALED(status)) { // Exit due to signal
+                snprintf(prompt, sizeof(prompt), "enseash [sign:%d|%ldms] %% ", WTERMSIG(status), execution_time);
             }
+            write(STDOUT_FILENO, prompt, strlen(prompt)); // Display the prompt
         }
     }
 }
-int findCharPosition(char *str[], const char* target) {
-    for (int i = 0; i<MAX_ARGUMENTS_NUMBER; i++) { // Parcourt jusqu'à la fin de la chaîne
+
+// Find the position of a specific token in the argument list
+int findCharPosition(char *str[], const char *target) {
+    for (int i = 0; i < MAX_ARGUMENTS_NUMBER; i++) {
         if (str[i] == target) {
-            return i; // Retourne la position si le caractère est trouvé
+            return i; // Return the position if found
         }
     }
-    return -1; // Retourne -1 si le caractère n'est pas trouvé
-}
-// Execute the given command in the child process
-void command_execution(char**argv){
-    int inRedirectPosition = findCharPosition(argv, "<");
-    int outRedirectPosition = findCharPosition(argv, ">");
-    if (inRedirectPosition == -1 && outRedirectPosition == -1) {
-        if(-1 == execvp(argv[0],argv)){ //On est passé a execvp pour balancer le char** direct
-            write(STDOUT_FILENO, ERROR_MESSAGE, strlen(ERROR_MESSAGE));
-            exit(0);// Terminate the child process
-        }
-    }
-    else if (inRedirectPosition == -1) {//Si on a un fichier d'output
-        char * stdout_redirect_filename = argv[outRedirectPosition + 1];
-        int fd_output = creat(stdout_redirect_filename, S_IWUSR|S_IRWXG);
-        dup2(STDOUT_FILENO, fd_output); // On a copié la sortie de exec dans le fichier
-        close(STDOUT_FILENO); //On coupe la sortie console pour assurer le transfert dans le fichier
-        *argv[outRedirectPosition] = (char)NULL;
-        if (-1 == execvp(argv[0],argv))
-        {
-            write(STDOUT_FILENO, ERROR_MESSAGE, strlen(ERROR_MESSAGE));
-        }
-
-    }
+    return -1; // Return -1 if not found
 }
 
+// Execute a command in the child process
+void command_execution(char **argv) {
+    int inRedirectPosition = findCharPosition(argv, "<");  // Check for input redirection
+    int outRedirectPosition = findCharPosition(argv, ">"); // Check for output redirection
+
+    if (inRedirectPosition == -1 && outRedirectPosition == -1) { // No redirection
+        if (execvp(argv[0], argv) == -1) {
+            write(STDOUT_FILENO, ERROR_MESSAGE, strlen(ERROR_MESSAGE));
+            exit(0);
+        }
+    } else if (inRedirectPosition == -1) { // Handle output redirection
+        char *stdout_redirect_filename = argv[outRedirectPosition + 1];
+        int fd_output = creat(stdout_redirect_filename, S_IWUSR | S_IRWXG);
+        dup2(fd_output, STDOUT_FILENO); // Redirect stdout to the file
+        close(fd_output); // Close the file descriptor
+        argv[outRedirectPosition] = NULL; // Remove redirection operator from arguments
+        if (execvp(argv[0], argv) == -1) {
+            write(STDOUT_FILENO, ERROR_MESSAGE, strlen(ERROR_MESSAGE));
+        }
+    }
+}
