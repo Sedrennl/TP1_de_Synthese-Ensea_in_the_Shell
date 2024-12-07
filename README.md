@@ -21,9 +21,9 @@ On tiendra ci-joint le journal de bord de l'avancée du TP :
 - [x] Question 4
 
 **Après séances :
-- [ ] Question 5
-- [ ] Question 6
-- [ ] Question 7
+- [x] Question 5
+- [x] Question 6
+- [x] Question 7
 - [ ] Question 8
 - [ ] Question 9
       
