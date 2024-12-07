@@ -1,6 +1,6 @@
 //TP Synthese ENSEA in the Shell
-//Question 2
-//BLARET julien and LABROUSSE Sédrenn on 06/12/24.
+//Question 6
+//BLARET julien and LABROUSSE Sédrenn on 07/12/24.
 //
 
 #include "question6.h"
@@ -12,7 +12,7 @@
 #define ERROR_MESSAGE "ERROR\n" // Message displayed when a command fails
 #define DIVISION_NS 1000000    // Division factor for execution time ns
 #define DIVISION_S 1000        // Division factor for execution time s
-#define MAX_ARGUMENTS_NUMBER 10
+#define MAX_ARGUMENTS_NUMBER 10    
 
 
 // Display the welcome message to the user
@@ -21,6 +21,7 @@ void welcome(){
     write(STDOUT_FILENO, WELCOME_MESSAGE, strlen(WELCOME_MESSAGE));
 }
 
+// Main loop to read user input and execute commands
 void command_input(){
     while(1)
     {
@@ -38,19 +39,18 @@ void command_input(){
         // Replace the '\n' from the Enter key with '\0' to mark the end of the string
         command_input[rt - 1] = '\0';
 
-        // Sert à casser la commande en plusieurs arguments pour préparer execlp
+        // Used to split the command into multiple arguments to prepare for execlp
         char *argv[MAX_ARGUMENTS_NUMBER];
-        char * token = strtok(command_input," ");
+        char *token = strtok(command_input, " ");
         int argc = 0;
-        while ( token != NULL )
-        {
-            argv[argc] = token;
-            argc ++;
-            // On demande le token suivant.
-            token = strtok ( NULL," ");
+
+        // Loop to parse the command input and store arguments in argv
+        while (token != NULL){
+            argv[argc] = token; // Store the current token in the argument list
+            argc++;             // Increment the argument count
+            // Request the next token
+            token = strtok(NULL, " ");
         }
-
-
 
         // Record the start time before the command execution
         clock_gettime(CLOCK_REALTIME, &tbegin);
