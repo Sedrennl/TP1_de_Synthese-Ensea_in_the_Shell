@@ -4,5 +4,5 @@ project(enseash C)
 set(CMAKE_C_STANDARD 11)
 
 add_executable(enseash main.c
-        question6.c
-        question6.h)
+        question7.c
+        question7.h)
