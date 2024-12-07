@@ -99,16 +99,45 @@ Pour ce faire on a créé 2 programmes test, presents dans test_q4 :
 
 Après avoir fait nos codes, nous avons pu tester la fonction test1
 
-![image test fonction](/photos/q4.png)
+![image test fonction](photos/q4.png)
 
 On voit bien qu'on nous retourne une erreur, ici 7 qui correspond à BUS FAULT. Mais on obtient aussi parfois le code 11 qui correspond au SEGMENTATION FAULT
 
 
+### Question 5 : [code question 5](../enseash/question5.c)  
 
-### Question 5 : [code question 5](../enseash/question5.c)
-**Objectif :** Mesure du temps d’exécution de la commande en utilisant l’appel clock_gettime :
+**Objectif :** Ajouter la mesure du temps d’exécution des commandes en utilisant l’appel système `clock_gettime`. Cette mesure doit être incluse dans le prompt après chaque commande, en millisecondes.
 
+**Implémentation :**  
+Nous avons ajouté :
+1. Des appels à `clock_gettime` pour capturer le temps avant et après l’exécution de chaque commande.
+2. Une formule pour convertir la différence entre les temps en millisecondes.
+3. Une intégration de cette mesure dans le prompt affiché à l’utilisateur.
 
+Nous obtenons le resultat escompté.
+![image test fonction](photos/q5.png)
+
+### Question 6 : [code question 6](../enseash/question6.c)
+
+**Objectif :** Permettre l’exécution de commandes complexes avec des arguments (par exemple, `ls -l` ou `echo Hello World`).  
+
+**Implémentation :**  
+Pour ajouter la gestion des arguments, nous avons utilisé les étapes suivantes :
+1. La commande utilisateur est segmentée en arguments à l’aide de `strtok`, qui divise la chaîne en tokens séparés par des espaces.
+2. Les arguments ainsi obtenus sont stockés dans un tableau `argv`.
+3. Ce tableau est passé à la fonction `execvp`, qui exécute la commande avec ses arguments.
+
+### Question 7 : [code question 7](../enseash/question7.c)
+
+**Objectif :** Ajouter la gestion des redirections de fichiers avec les opérateurs `<` (entrée standard) et `>` (sortie standard). Cela permettrait de rediriger la sortie d’une commande vers un fichier ou d’utiliser un fichier comme entrée pour une commande.  
+
+**Implémentation :**  
+Pour implémenter cette fonctionnalité :  
+1. Identification des opérateurs `<` et `>` dans les arguments à l’aide de `findCharPosition`.  
+2. Manipulation des descripteurs de fichier avec `dup2` pour rediriger les flux d’entrée ou de sortie.  
+3. Suppression des opérateurs et de leurs arguments associés dans la liste `argv` avant d’appeler `execvp`.  
+
+Nous n'avons malheuresement pas réussi à faire fonctionner cette dernière partie.
 
 
 
